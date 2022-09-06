@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>@SeD es6-2.03: contrôle des évènements du DOM...</title>
+    <style>
+      .external-block {
+        margin: auto;
+        padding: 30px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>@SeD es6-2.03: contrôle des évènements du DOM...</h1>
+
+    <div id="div1-R" class="external-block" style="background-color: red">
+      <div id="div1-O" class="external-block" style="background-color: orange">
+        <div id="div1-V" class="external-block" style="background-color: green">Bubbling Mode...</div>
+      </div>
+    </div>
+
+    <div id="div2-V" class="external-block" style="background-color: green">
+      <div id="div2-O" class="external-block" style="background-color: orange">
+        <div id="div2-R" class="external-block" style="background-color: red">Capture Mode...</div>
+      </div>
+    </div>
+
+    <br /><br />
+
+    <div id="div3-R" class="external-block" style="background-color: red">
+      <div id="div3-O" class="external-block" style="background-color: orange">
+        <div id="div3-V" class="external-block" style="background-color: green">Bubbling Mode Stopped...</div>
+      </div>
+    </div>
+
+    <div>
+      <p><input type="checkbox" id="chk1" /> <label for="chk1">Case à cocher</label></p>
+      <p><input type="checkbox" id="chk2" /> <label for="chk2">Case impossible à cocher</label></p>
+    </div>
+    <script src="es6-2.03 - contrôle des évènements du DOM.js"></script>
+  </body>
+</html>

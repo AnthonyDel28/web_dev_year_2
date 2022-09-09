@@ -1,6 +1,6 @@
 <?php
 
-// Visibilité (getters & setters)
+// Interaction entre les objets
 
 class User2
 {
@@ -15,7 +15,6 @@ class User2
         return "Bienvenue parmi nous: " . $this->getName();
     }
 
-    // Les getters permettent d'accéder aux propriétés private
     /**
      * @return string
      */
@@ -32,22 +31,4 @@ class User2
         $this->name = $name;
     }
 
-
-    /**
-     * @return int
-     */
-    public function getOld() :int
-    {
-        return $this->old;
-    }
-
-    // Les setters permettent de modifier les propritétés private
-    /**
-     * @param int $old
-     * @return void
-     */
-    public function setOld(int $old) :void
-    {
-        $this->old = $old;
-    }
 }

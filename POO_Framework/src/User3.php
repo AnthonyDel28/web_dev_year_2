@@ -2,7 +2,7 @@
 
 // Interaction entre les objets
 
-class User2
+class User3
 {
     private string $name;
     private int $old;
@@ -31,4 +31,13 @@ class User2
         $this->name = $name;
     }
 
+    /**
+     * @param User3 $user
+     * @return string
+     */
+
+    // La méthode prende en paramètre un objet de la classe User3
+    public function ban(User3 $user) :string {
+        return $user->getName() . ' a été banni par ' . $this->getName();
+    }
 }

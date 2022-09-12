@@ -21,6 +21,11 @@ class exProduct01
     private int $product_price;
     private int $stock;
 
+    /**
+     * @param string $product_name
+     * @param int $product_price
+     * @param int $stock
+     */
     public function __construct(string $product_name, int $product_price, int $stock)
     {
         $this->setProductName($product_name);
@@ -28,16 +33,24 @@ class exProduct01
         $this->setStock($stock);
     }
 
-    public function reduce(int $reduction)
+    /**
+     * @param int $reduction
+     * @return int
+     */
+    public function reduce(int $reduction) : int
     {
         $this->setProductPrice($this->getProductPrice() - $reduction);
+        return $this->getProductPrice();
     }
 
-    public function sell($quantity)
+    /**
+     * @param $quantity
+     * @return void
+     */
+    public function sell($quantity) : float
     {
-        print $this->getProductPrice();
         $this->setStock($this->getStock() - $quantity);
-        print $montant;
+        return ($this->getProductPrice() * 0.79) * 5;
     }
 
     /**
@@ -87,6 +100,4 @@ class exProduct01
     {
         $this->stock = $stock;
     }
-
-
 }

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Ex03</title>
+</head>
+<body>
+
+<script>
+    let montants = [25.4, 124.6, 12.9, 144.36];
+
+    console.log("\n----------Taille du tableau");
+    console.log("Taille: ", montants.length);
+    console.log("---------------------------------");
+
+    console.log("Affichage du tableau");
+    let i = 0;
+    while(i < montants.length){
+        console.log(montants[i]);
+        i++;
+    }
+    console.log("---------------------------------");
+    console.log("Affichage des gros montants (>= 100");
+    let j = 0;
+    while (j < montants.length){
+        if(montants[j] >= 100) {
+            console.log(montants[j]);
+        }
+        j++;
+    }
+</script>
+</body>
+</html>

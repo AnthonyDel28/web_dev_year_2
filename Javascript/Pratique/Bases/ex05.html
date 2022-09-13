@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Ex05</title>
+</head>
+<body>
+
+<script>
+    function hello(){
+        console.log("Hello World!");
+    }
+
+    let user1 = {name: "Alexander", surname: "Mason", old: "44"};
+    let user2 = {name: "Alice", surname: "Baker", old: "27"};
+    function printUser(person) {
+         console.log("Hello " + person.name + " " + person.surname);
+         console.log("You are " + person.old + " years old");
+    }
+
+    printUser(user1);
+    printUser(user2);
+
+    function double(value){
+        return value * 2;
+    }
+
+    console.log(double(5));
+    console.log("----------------------------------");
+
+    let k = 1;
+    while(k <= 29){
+        if(k % 5 == 0 || k % 3 == 0){
+            console.log(k);
+        }
+        k++;
+    }
+</script>
+</body>
+</html>

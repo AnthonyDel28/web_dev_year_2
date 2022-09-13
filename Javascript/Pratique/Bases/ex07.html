@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript Ex07</title>
+</head>
+<body>
+<input type="text" id="nbr1">
+<p>+</p>
+<input type="text" id="nbr2">
+<div id="result"></div>
+<script>
+
+    document.getElementById("nbr1").addEventListener("keyup", calculator);
+    document.getElementById("nbr2").addEventListener("keyup", calculator);
+
+    function calculator() {
+        let i = Number(document.getElementById("nbr1").value);
+        let j = Number(document.getElementById("nbr2").value);
+        let k = i + j;
+        document.getElementById("result").innerHTML = k ;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Ex10</title>
+</head>
+<body>
+<input type="text" id="txtCpt" readonly size="5">
+<button id="btnStart">Start</button>
+<button id="btnStop">Stop</button>
+
+<script>
+    document.getElementById("btnStart").addEventListener("click", startCpt);
+    document.getElementById("btnStop").addEventListener("click", stopCpt);
+    document.getElementById("btnStop").disabled = true;
+    let timer1 = null;
+
+    function incCpt() {
+        let cpt = Number(document.getElementById("txtCpt").value);
+        cpt++;
+
+        document.getElementById("txtCpt").value = cpt;
+    }
+
+    function startCpt() {
+        if (timer1 != null) return;
+        timer1 = setInterval(incCpt, 100);
+        document.getElementById("btnStart").disabled = true;
+        document.getElementById("btnStop").disabled = false;
+    }
+
+    function stopCpt() {
+        if(timer1 == null) return;
+        clearInterval(timer1);
+        timer1 = null;
+        document.getElementById("btnStart").disabled = false;
+        document.getElementById("btnStop").disabled = true;
+    }
+</script>
+</body>
+</html>

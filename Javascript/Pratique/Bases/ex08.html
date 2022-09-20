@@ -25,6 +25,15 @@
 
         document.getElementById("txtCpt").value = cpt;
     }
+
+    function startCpt()
+    {
+        timer1 = setInterval(incCpt, 1000);
+    }
+
+    function stopCpt() {
+        clearInterval(timer1);
+    }
 </script>
 </body>
 </html>

@@ -77,7 +77,7 @@ class Personnage
      * @param $message
      * @return void
      */
-    public function parler($message) : void {
+    public function parler($message = 'Que me voulez-vous?') : void {
         print $message;
     }
 
@@ -96,7 +96,7 @@ class Personnage
      */
     public function getArmes() : void {
         foreach(self::$armes as $key => $value){
-            print $value . '<br>';
+            print $value . ', ';
         }
     }
 

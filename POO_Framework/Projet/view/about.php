@@ -1,1 +1,3 @@
-<h2>About us</h2>
+<h2>About</h2>
+
+<?php

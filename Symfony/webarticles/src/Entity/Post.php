@@ -33,6 +33,9 @@ class Post
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[ORM\Column]
+    private ?int $rating = null;
+
     public function getId(): ?int
     {
         return $this->id;

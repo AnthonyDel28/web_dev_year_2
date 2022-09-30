@@ -5,12 +5,13 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Post;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
 use Monolog\DateTimeImmutable;
 
 
-class PostFixtures extends Fixture
+class PostFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -24,12 +25,19 @@ class PostFixtures extends Fixture
                 ->setContent($faker->paragraphs(3, true))
                 ->setCreatedAt(new \DateTimeImmutable())
                 ->setImage($i . '.png')
-                ->setIsPublished(1)
+                ->setIsPublished($faker->boolean(90))
                 ->setCategory($categories[$faker->numberBetween(0, count($categories) -1)]);
             $manager->persist($post);
             $i++;
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            CategoryFixtures::class,
+        ];
     }
 }

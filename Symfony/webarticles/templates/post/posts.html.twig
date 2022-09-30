@@ -4,7 +4,31 @@
 {% block body %}
     <main class="container">
         <section id="posts" class="row">
-            <h2 class="display-4 pt-4">Liste des articles</h2>
+            <div class="mt-4">
+                <h2 class="display-4">Liste des articles</h2><br>
+
+            <table>
+                <thead>
+                <tr>
+                    <th><b>Image</b></th>
+                    <th><b>Titre</b></th>
+                    <th><b>Catégorie</b></th>
+                    <th><b>Date de parution</b></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                    {% for post in posts %}
+                        <tr>
+                            <td class="p-2"><img src="{{ asset('/img/posts/' ~ post.image) }}" class="post-image"></td>
+                            <td class="p-2">{{ post.title }}</td>
+                            <td class="p-2">{{ post.category.name }}</td>
+                            <td class="p-2">{{ post.createdAt|date("d/m/Y") }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
         </section>
     </main>
 

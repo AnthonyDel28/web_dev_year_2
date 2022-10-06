@@ -3,3 +3,12 @@
 .post-image {
     width: 50px;
 }
+
+table {
+    border-collapse: separate;
+    border-spacing: 50px 0;
+}
+
+td {
+    padding: 10px 0;
+}

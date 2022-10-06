@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,5 +17,16 @@ class PostController extends AbstractController
         return $this->render('post/posts.html.twig', [
             'posts' => $posts,
         ]);
+    }
+
+    /**
+     * @param Post $post
+     * @return Response
+     */
+    #[Route('post/{id}', name: 'post')]
+    public function post(Post $post) : Response
+    {
+        return $this->render('post/detail.html.twig', [
+            'post' => $post]);
     }
 }

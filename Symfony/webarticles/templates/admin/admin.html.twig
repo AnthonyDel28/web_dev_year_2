@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Webarticles - Admin{% endblock %}
+
+
+{% block body %}
+    <main class="container">
+        <section id="posts">
+            <h2 class="display-4 my-4">Administration</h2>
+            <div class="row">
+                <div class="col-md-10 offset-1">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Titre</th>
+                            <th>Création</th>
+                            <th>Catégorie</th>
+                            <th><i class="icofont-ui-delete"></i></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for post in posts %}
+                            <tr>
+                                <td><img src="{{ asset('img/posts/' ~ post.image) }}" alt="" class="post-image"></td>
+                                <td><a href="{{ path('post', {id:post.id}) }}">{{ post.title|capitalize }}</a></td>
+                                <td>{{ post.createdAt|date('d/m/Y') }}</td>
+                                <td>{{ post.category.name }}</td>
+                                <td><a href="{{ path('delete', {id:post.id}) }}"><i class="icofont-ui-delete"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

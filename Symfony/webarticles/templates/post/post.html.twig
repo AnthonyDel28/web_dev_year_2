@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-12 offset-1">
+                <h2 class="display-4 py-4">Détail de l'article</h2>
+            </div>
+            <div class="col-md-4">
+                <img src="{{ asset('img/posts/' ~ post.image) }}" alt="{{ post.title }}">
+            </div>
+            <div class="col-md-8">
+                <h3 class="display-5 py-4">{{ post.title|capitalize }}</h3>
+                <h4>Création: {{ post.createdAt|date('d/m/Y') }}</h4>
+                <p class="lead">{{ post.content }}</p>
+                <p>
+                    <a href="{{ path('posts') }}" class="btn btn-outline-dark">Retour aux articles</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+{% endblock body %}

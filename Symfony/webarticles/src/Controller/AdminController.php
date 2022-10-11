@@ -13,9 +13,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class AdminController extends AbstractController
 {
+    /**
+     * @param PostRepository $repository
+     * @return Response
+     */
     #[Route('/admin', name: 'admin')]
     public function posts(PostRepository $repository): Response
     {
@@ -28,7 +33,11 @@ class AdminController extends AbstractController
         ]);
     }
 
-
+    /**
+     * @param Post $post
+     * @param EntityManagerInterface $manager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     #[Route('/admin/delete/{id}', name: 'delete')]
     public function delete(Post $post, EntityManagerInterface $manager)
     {
@@ -37,13 +46,13 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('admin');
     }
 
-    #[Route('/admin/new', name: 'new')]
 
     /**
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @return Response
      */
+    #[Route('/admin/new', name: 'new')]
     public function new(Request $request, EntityManagerInterface $manager)
     {
         $post = new Post;
@@ -63,6 +72,11 @@ class AdminController extends AbstractController
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return Response
+     */
     #[Route('/admin/category', name: 'category')]
     public function addCategory(Request $request, EntityManagerInterface $manager) : Response
     {
@@ -77,5 +91,28 @@ class AdminController extends AbstractController
         return $this->renderForm('admin/category.html.twig', [
             'form' => $form
         ]);
+    }
+
+    #[Route('/admin/edit/{id}', name: 'edit')]
+    public function edit(Request $request, EntityManagerInterface $manager, Post $post) : Response
+    {
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $manager->persist($post);
+            $manager->flush();
+            return $this->redirectToRoute('posts');
+        }
+        return $this->renderForm('admin/edit.html.twig', [
+            'form' => $form
+        ]);
+    }
+
+    #[Route('/admin/hide/{id}', name: 'hide')]
+    public function hide(EntityManagerInterface $manager, Post $post) :Response
+    {
+        $post->setIsPublished(!$post->isIsPublished());
+        $manager->flush();
+        return $this->redirectToRoute('admin');
     }
 }

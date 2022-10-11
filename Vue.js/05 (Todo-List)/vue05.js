@@ -13,8 +13,8 @@ const app = Vue.createApp ({
     methods: {
         ajouterTache: function () {
             this.nouvelleTache.nom = this.nouvelleTache.nom.trim();
-            if(this.nouvelleTache.nom == "") return;
-            if(this.taches.findIndex(t => t.nom == this.nouvelleTache.nom) >= 0) return;
+            if(this.nouvelleTache.nom === "") return;
+            if(this.taches.findIndex(t => t.nom === this.nouvelleTache.nom) >= 0) return;
 
             this.taches.push(this.nouvelleTache);
             this.nouvelleTache = {nom: "", checked: false};

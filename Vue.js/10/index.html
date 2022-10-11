@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VueJS - 10</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="cpt" readonly>
+    <button v-on:click="start" v-bind:disabled="state == 'running'">Start</button>
+    <button v-on:click="end" v-bind:disabled="state != 'running'">Stop</button>
+    <button v-on:click="reset" v-bind:disabled="state != 'stopped'">Reset</button>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="10.js"></script>
+</body>
+</html>

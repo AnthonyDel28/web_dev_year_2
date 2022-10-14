@@ -26,8 +26,8 @@ class PostFixtures extends Fixture implements DependentFixtureInterface
             ->setCreatedAt(new \DateTimeImmutable())
             ->setImage($i.'.png')
             ->setIsPublished($faker->boolean(90))
-            ->setCategory($categories[$faker->numberBetween(0, count($categories) -1)]
-            ->setSlug($slugify->slugify($title)));
+            ->setCategory($categories[$faker->numberBetween(0, count($categories) -1)])
+            ->setSlug($slugify->slugify($title));
       $manager->persist($post);
     }
 

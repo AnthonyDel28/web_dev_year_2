@@ -145,10 +145,8 @@ class Post
     #[ORM\PreUpdate]
     public function createSlug()
     {
-        $slugify = new Slugify();
-        $this->slug = $slugify->slugify($this->title);
+       $slugify = new Slugify();
+       $this->slug = $slugify->slugify($this->title);
 
     }
-
-
 }

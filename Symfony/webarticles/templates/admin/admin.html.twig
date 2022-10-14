@@ -16,6 +16,7 @@
                             <th>Titre</th>
                             <th>Création</th>
                             <th>Catégorie</th>
+                            <th>Niveau</th>
                             <th><i class="icofont-ui-delete"></i></th>
                             <th><i class="icofont-ui-edit"></i></th>
                             <th><i class="icofont-eye"></i></th>
@@ -28,6 +29,7 @@
                                 <td><a href="{{ path('post', {slug:post.slug}) }}">{{ post.title|capitalize }}</a></td>
                                 <td>{{ post.createdAt|date('d/m/Y') }}</td>
                                 <td>{{ post.category.name }}</td>
+                                <td>{{ post.level.name }}</td>
                                 <td><a href="{{ path('delete', {id:post.id}) }}"><i class="icofont-ui-delete text-danger"></i></a></td>
                                 <td><a href="{{ path('edit', {id:post.id}) }}"><i class="icofont-ui-edit"></i></a></td>
                                 <td><a href="{{ path('view', {id:post.id}) }}">

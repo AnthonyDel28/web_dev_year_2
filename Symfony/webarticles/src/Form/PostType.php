@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Category;
+use App\Entity\Level;
 use App\Entity\Post;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -30,6 +31,11 @@ class PostType extends AbstractType
             ])
             ->add('category', EntityType::class, [
                 'class'         => Category::class,
+                'choice_label'  => 'name',
+                'placeholder'   => 'Sélectionnez...',
+            ])
+            ->add('level', EntityType::class, [
+                'class'         => Level::class,
                 'choice_label'  => 'name',
                 'placeholder'   => 'Sélectionnez...',
             ])

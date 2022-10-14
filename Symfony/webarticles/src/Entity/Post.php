@@ -53,6 +53,10 @@ class Post
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    #[ORM\ManyToOne]
+    private ?Level $level = null;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -148,5 +152,17 @@ class Post
        $slugify = new Slugify();
        $this->slug = $slugify->slugify($this->title);
 
+    }
+
+    public function getLevel(): ?level
+    {
+        return $this->level;
+    }
+
+    public function setLevel(?level $level): self
+    {
+        $this->level = $level;
+
+        return $this;
     }
 }

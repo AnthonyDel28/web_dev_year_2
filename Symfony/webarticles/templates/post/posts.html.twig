@@ -16,6 +16,7 @@
                       <th>Titre</th>
                       <th>Création</th>
                       <th>Catégorie</th>
+                      <th>Niveau</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -25,6 +26,7 @@
                     <td><a href="{{ path('post', {slug:post.slug}) }}">{{ post.title|capitalize }}</a></td>
                     <td>{{ post.createdAt|date('d/m/Y') }}</td>
                     <td>{{ post.category.name }}</td>
+                    <td>{{ post.level.name }}</td>
                 </tr>
               {% endfor %}
                   </tbody>

@@ -24,7 +24,7 @@ class PostController extends AbstractController
     return $this->render('post/posts.html.twig', ['posts' => $posts]);
   }
 
-  #[Route('post/{id}', name: 'post')]
+  #[Route('post/{slug}', name: 'post')]
 
     /**
      * @param Post $post

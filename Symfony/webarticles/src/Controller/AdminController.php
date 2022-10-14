@@ -2,18 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
 use App\Entity\Post;
-use App\Form\CategoryType;
 use App\Form\PostType;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Validator\Constraints as Assert;
 
 class AdminController extends AbstractController
 {
@@ -36,7 +33,7 @@ class AdminController extends AbstractController
     /**
      * @param Post $post
      * @param EntityManagerInterface $manager
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return RedirectResponse
      */
     #[Route('/admin/delete/{id}', name: 'delete')]
     public function delete(Post $post, EntityManagerInterface $manager)
@@ -45,7 +42,6 @@ class AdminController extends AbstractController
         $manager->flush();
         return $this->redirectToRoute('admin');
     }
-
 
     /**
      * @param Request $request
@@ -60,7 +56,8 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
             $post->setCreatedAt(new \DateTimeImmutable())
-                 ->setImage('default.png');
+                 ->setImage('default.png')
+                 ->createSlug();
             $manager->persist($post);
             $manager->flush();
             return $this->redirectToRoute('admin');
@@ -72,44 +69,23 @@ class AdminController extends AbstractController
         ]);
     }
 
-    /**
-     * @param Request $request
-     * @param EntityManagerInterface $manager
-     * @return Response
-     */
-    #[Route('/admin/category', name: 'category')]
-    public function addCategory(Request $request, EntityManagerInterface $manager) : Response
-    {
-        $category = new Category();
-        $form = $this->createForm(CategoryType::class, $category);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($category);
-            $manager->flush();
-            return $this->redirectToRoute('admin');
-        }
-        return $this->renderForm('admin/category.html.twig', [
-            'form' => $form
-        ]);
-    }
-
     #[Route('/admin/edit/{id}', name: 'edit')]
-    public function edit(Request $request, EntityManagerInterface $manager, Post $post) : Response
+    public function edit(EntityManagerInterface $manager, Post $post, Request $request)
     {
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $manager->persist($post);
+        if($form->isSubmitted() && $form->isValid()) {
+            $post->createSlug();
             $manager->flush();
-            return $this->redirectToRoute('posts');
+            return $this->redirectToRoute('admin');
         }
         return $this->renderForm('admin/edit.html.twig', [
-            'form' => $form
+            'form' => $form,
         ]);
     }
 
-    #[Route('/admin/hide/{id}', name: 'hide')]
-    public function hide(EntityManagerInterface $manager, Post $post) :Response
+    #[Route('/admin/view/{id}', name: 'view')]
+    public function view(EntityManagerInterface $manager, Post $post)
     {
         $post->setIsPublished(!$post->isIsPublished());
         $manager->flush();

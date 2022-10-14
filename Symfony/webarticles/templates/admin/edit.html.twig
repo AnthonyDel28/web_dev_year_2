@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Admin - Edit {% endblock %}
+{% block title %}Admin - Edit{% endblock %}
 {% block body %}
     <main class="container">
         <div class="row">
-            <div class="md-8 offset-2">
-                <h2 class="display-5">Modifier l'article</h2>
+            <div class="col-md-8 offset-2">
+                <h2 class="display-5 my-3">Modifier l'article</h2>
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button type="submit" class="btn btn-outline-secondary">Modifiez l'article</button>
+                {{ form_end(form) }}
             </div>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <button type="submit" class="btn btn-outline-secondary">Modifier l'article</button>
-            {{ form_end(form) }}
         </div>
     </main>
 {% endblock %}

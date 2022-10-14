@@ -69,7 +69,6 @@ class Category
                 $post->setCategory(null);
             }
         }
-
         return $this;
     }
 }

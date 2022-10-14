@@ -22,7 +22,7 @@
               {% for post in posts %}
                 <tr>
                     <td><img src="{{ asset('img/posts/' ~ post.image) }}" alt="" class="post-image"></td>
-                    <td><a href="{{ path('post', {id:post.id}) }}">{{ post.title|capitalize }}</a></td>
+                    <td><a href="{{ path('post', {slug:post.slug}) }}">{{ post.title|capitalize }}</a></td>
                     <td>{{ post.createdAt|date('d/m/Y') }}</td>
                     <td>{{ post.category.name }}</td>
                 </tr>

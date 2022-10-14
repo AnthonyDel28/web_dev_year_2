@@ -1,19 +1,8 @@
 
-a {
-    text-decoration: none;
-}
-.posts {
-    text-decoration: none;
-}
-
 .post-image {
     width: 40px;
 }
 
-.icofont-ui-delete {
-    color: red;
-}
-
-table {
-    text-align: center;
+a {
+    text-decoration: none;
 }

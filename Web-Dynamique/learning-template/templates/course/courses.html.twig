@@ -26,24 +26,23 @@
                 <!-- FILTERIZER COURSES -->
                 <div class="col-md-12 filter-container">
                     <!-- Card -->
-
                     {% for course in courses %}
-                    <div class="col-md-4 filter-item" data-category="{{ course.category.id }}" data-sort="value">
-                        <div class="card m-3" style="min-height: 480px !important;">
-                            <div class="card-header bg-light">
-                                <h5 class="text-center">{{ course.name }}</h5>
-                            </div>
-                            <div class="card-body">
-                                <img alt="" src="{{ asset('img/sections/' ~ course.ImageName) }}">
-                                <p class="card-text">
-                                <h5 class="card-subtitle text-muted my-3">{{ course.name }}</h5>
-                                <p>{{ course.smallDescription }}</p>
-                                <div class="text-center">
-                                    <a class="btn btn-primary btn-sm" href="{{ path('course', {slug:course.slug}) }}">Voir ce cours</a>
+                        <div class="col-md-4 filter-item" data-category="{{ course.category.id }}" data-sort="value">
+                            <div class="card m-3" style="min-height: 480px !important;">
+                                <div class="card-header bg-light">
+                                    <h5 class="text-center">{{ course.name }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <img alt="" src="{{ asset('img/sections/' ~ course.ImageName) }}">
+                                    <p class="card-text">
+                                    <h5 class="card-subtitle text-muted my-3">{{ course.name }}</h5>
+                                    <p>{{ course.smallDescription }}</p>
+                                    <div class="text-center">
+                                        <a class="btn btn-primary btn-sm" href="{{ path('course', {slug:course.slug}) }}">Voir ce cours</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     {% endfor %}
 
 

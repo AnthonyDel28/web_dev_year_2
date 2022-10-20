@@ -9,7 +9,7 @@
 
     <main class="container course">
         <section id="detail">
-            <h2 class="my-5">Nom de la formation</h2>
+            <h2 class="my-5">{{ course.name }}</h2>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="tab" href="#profil">Profile</a>
@@ -28,19 +28,19 @@
                 <div class="tab-pane fade show active" id="profil">
                     <div class="row">
                         <div class="col-md-5">
-                            <img src="{{ asset('img/sections/1.jpg') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('img/sections/' ~ course.ImageName) }}" alt="" class="img-fluid">
                         </div>
                         <div class="col-md-7">
                             <h4>Description</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad asperiores autem consectetur dignissimos eaque, exercitationem fugiat, inventore ipsa libero maxime minima, nisi non obcaecati rerum sapiente sed tempore voluptatum.</p>
+                            <p>{{ course.smallDescription }}</p>
                             <h4>Informations</h4>
                             <p class="description">
-                                prix: 100€<br>
-                                Durée: 2 ans<br>
-                                Catégorie: Informatique<br>
+                                prix: {{ course.price }}<br>
+                                Durée: {{ course.duration }} heures<br>
+                                Catégorie: {{ course.category.name }}<br>
                                 Horaire: Lun et jeu matin<br>
                                 Niveau: <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Test d'admission">
-                                    CES
+                                {{ course.level.name }}
                                 </button>
                             </p>
                         </div>
@@ -48,15 +48,7 @@
                 </div>
                 <div class="tab-pane fade" id="details">
                     <h4>Description complète</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium autem doloremque, eos eum
-                        fugiat harum, nemo, nisi pariatur praesentium quas quo quos recusandae reiciendis repudiandae
-                        rerum sapiente tempore. Eligendi, necessitatibus?</p>
-                    <p>Autem corporis debitis dicta eius explicabo, fugit illum impedit, in iure minima molestias nihil
-                        nisi nobis odit omnis pariatur porro, repellendus rerum sit soluta ullam veniam voluptatibus
-                        voluptatum? Doloribus, tempora?</p>
-                    <p>Aperiam, commodi fuga id ipsum nostrum officia quam? A adipisci atque autem, consectetur delectus
-                        exercitationem facilis iste labore natus nemo odit officia officiis optio perspiciatis quaerat
-                        quas recusandae, rem tenetur?</p>
+                    <p>{{ course.fullDescription }}</p>
                     <p><a href="" class="btn btn-primary">Télécharger le programme</a></p>
                 </div>
                 <div class="tab-pane fade" id="comments">

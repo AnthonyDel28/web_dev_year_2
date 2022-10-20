@@ -9,44 +9,19 @@
         <section class="home-courses">
             <h2 class="my-5 text-black-50">Nos dernières formations</h2>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img alt="" src="{{ asset('img/sections/1.jpg') }}" style="height: 200px; width: 100%">
-                        <div class="card-body">
-                            <h5 class="card-title text-dark">Formation 01</h5>
-                            <p>Photographie</p>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-secondary btn-sm">En savoir plus...</a>
+                {% for course in courses %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img alt="" src="{{ asset('img/sections/' ~ course.ImageName) }}" style="height: 200px; width: 100%">
+                            <div class="card-body">
+                                <h5 class="card-title text-dark">{{ course.name }}</h5>
+                                <p>{{ course.category.name }}</p>
+                                <p class="card-text">{{ course.smallDescription }}</p>
+                                <a href="{{ path('course', {slug:course.slug}) }}" class="btn btn-secondary btn-sm">En savoir plus...</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <img alt="" src="{{ asset('img/sections/2.jpg') }}" style="height: 200px; width: 100%">
-                        <div class="card-body">
-                            <h5 class="card-title text-dark">Formation 02</h5>
-                            <p>Business</p>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-secondary btn-sm">En savoir plus...</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <img alt="" src="{{ asset('img/sections/3.jpg') }}" style="height: 200px; width: 100%">
-                        <div class="card-body">
-                            <h5 class="card-title text-dark">Formation 03</h5>
-                            <p>Développement</p>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-secondary btn-sm">En savoir plus...</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </section>
         <!-- End Latest courses -->

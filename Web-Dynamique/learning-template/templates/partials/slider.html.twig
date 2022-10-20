@@ -1,0 +1,16 @@
+{# Slider #}
+    {% block slider %}
+        <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('img/slider/slider01.jpg') }}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('img/slider/slider02.jpg') }}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('img/slider/slider03.jpg') }}" class="d-block w-100" alt="...">
+                </div>
+            </div>
+        </div>
+    {% endblock %}

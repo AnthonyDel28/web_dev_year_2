@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} - Learning{% endblock %}</title>
+    <link rel="icon" href="{{ asset('img/design/favicon.png') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/icofont.min.css') }}">
+    {% block stylesheets %}
+
+    {% endblock %}
+
+    {% block javascripts %}
+
+    {% endblock %}
+</head>
+<body>
+    {% include 'partials/header.html.twig' %}
+    {% block body %}{% endblock %}
+    {% include 'partials/footer.html.twig' %}
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
+</body>
+</html>

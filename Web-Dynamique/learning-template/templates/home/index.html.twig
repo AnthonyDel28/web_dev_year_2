@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{{ parent() }}{% endblock %}
+
+{% block body %}
+    {% include 'partials/slider.html.twig' %}
+    <!-- Latest courses -->
+    <main class="container">
+        <section class="home-courses">
+            <h2 class="my-5 text-black-50">Nos dernières formations</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img alt="" src="{{ asset('img/sections/1.jpg') }}" style="height: 200px; width: 100%">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Formation 01</h5>
+                            <p>Photographie</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                            <a href="#" class="btn btn-secondary btn-sm">En savoir plus...</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img alt="" src="{{ asset('img/sections/2.jpg') }}" style="height: 200px; width: 100%">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Formation 02</h5>
+                            <p>Business</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                            <a href="#" class="btn btn-secondary btn-sm">En savoir plus...</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card">
+                        <img alt="" src="{{ asset('img/sections/3.jpg') }}" style="height: 200px; width: 100%">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Formation 03</h5>
+                            <p>Développement</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                            <a href="#" class="btn btn-secondary btn-sm">En savoir plus...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Latest courses -->
+
+        <!-- Latest news -->
+        <div class="home-news">
+            <h2 class="my-5 text-black-50">Nos dernières actualités</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ asset('img/news/04.png') }}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Actualité 01</h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores commodi cumque delectus distinctio dolor ex maxime minima odio provident reiciendis? Accusantium id iste similique sint!</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="float-end"><small><a href="">Lire plus...</a></small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ asset('img/news/07.png') }}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Actualité 02</h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores commodi cumque delectus distinctio dolor ex maxime minima odio provident reiciendis? Accusantium id iste similique sint!</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="float-end"><small><a href="">Lire plus...</a></small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ asset('img/news/016.png') }}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Actualité 03</h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores commodi cumque delectus distinctio dolor ex maxime minima odio provident reiciendis? Accusantium id iste similique sint!</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="float-end"><small><a href="">Lire plus...</a></small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ asset('img/news/012.png') }}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Actualité 04</h5>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores commodi cumque delectus distinctio dolor ex maxime minima odio provident reiciendis? Accusantium id iste similique sint!</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="float-end"><small><a href="">Lire plus...</a></small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Latest news -->
+
+        <!-- Cool Links -->
+        <section>
+            <h2 class="my-5 text-black-50">Informations importantes</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card border-shadow text-dark mb-3">
+                        <div class="card-header text-center text-primary"><i class="icofont-money"></i>&nbsp;&nbsp;NOS TARIFS</div>
+                        <div class="card-body">
+                            <h4 class="card-title">Tarifs de 2022-2023</h4>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card border-shadow text-dark mb-3">
+                        <div class="card-header text-center text-primary"><i class="icofont-info-square"></i>&nbsp;&nbsp;INFORMATIONS</div>
+                        <div class="card-body">
+                            <h4 class="card-title">Organisation des formations</h4>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card border-shadow text-dark mb-3">
+                        <div class="card-header text-center text-primary"><i class="icofont-ui-edit"></i>&nbsp;&nbsp;INSCRIPTION</div>
+                        <div class="card-body">
+                            <h4 class="card-title">Modalités d'inscription</h4>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Cool Links -->
+
+    </main>
+{% endblock %}

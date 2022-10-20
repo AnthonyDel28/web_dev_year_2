@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VueJS - 12 Timer</title>
+</head>
+<body>
+<div id="app">
+    <p>Durée: {{msToHMS(long)}}</p>
+    <button v-on:click="start">Start</button>
+    <button v-on:click="stop">Stop</button>
+    <button v-on:click="lap">Lap</button>
+    <button v-on:click="reset">Reset</button>
+    <ul>
+        <li v-for="lap in lapTimes">{{msToHMS(lap)}}</li>
+    </ul>
+    <br>
+    <p>Etat: {{state}}</p>
+    <p>Départ: {{start_time}}</p>
+    <p>Fin: {{end_time}}</p>
+    <p>Durée: {{long}}</p>
+    <p>Tours: {{lapTimes}}</p>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="12.js"></script>
+</body>
+</html>

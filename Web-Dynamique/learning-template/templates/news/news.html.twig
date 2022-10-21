@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Courses {{ parent() }}{% endblock %}
+
+{% block body %}
+    <!-- Banner -->
+    <div class="banner">
+    </div>
+    <!-- End Banner -->
+
+    <main class="container">
+        <!-- Categories -->
+        <section id="news">
+            <h2 class="my-5 text-black-50">Toutes nos actualités</h2>
+            <div class="row">
+                <!-- FILTERIZER COURSES -->
+                <div class="col-md-12 filter-container">
+                    <!-- Card -->
+                    {% for new in news %}
+                        <div class="col-md-12">
+                            <div class="card">
+                                <img class="card-img-top" src="{{asset('img/news/' ~ new.ImageName) }}" style="width: 10%" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ new.name }}</h5>
+                                    <p class="card-text">{{ new.content }}
+                                <div class="card-footer">
+                                    <small class="text-muted">Last updated 3 mins ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+                <div class="navigation">
+                    {{ knp_pagination_render(news) }}
+                </div>
+        </section>
+        <!-- End Categories -->
+    </main>
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.filterizr.min.js') }}"></script>
+    <script>
+        let filterizd = $('.filter-container').filterizr({
+            // options here
+        });
+    </script>
+{% endblock %}
+

@@ -50,7 +50,6 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
 
     public function getDependencies()
     {
-        // TODO: Implement getDependencies() method.
         return [
             CourseCategoryFixtures::class,
             CourseLevelFixtures::class,

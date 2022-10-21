@@ -66,3 +66,11 @@ footer a:hover {
   margin-bottom: 26px;
   color: red;
 }
+
+.card-body {
+  text-align: center;
+}
+
+.card-body a {
+  text-decoration: none;
+}

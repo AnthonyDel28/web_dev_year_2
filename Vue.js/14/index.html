@@ -10,14 +10,21 @@
 <body>
 <div id="app">
     <h2>Personnes:</h2>
-    <div id="personnes">
-        <li v-for="name in names">
-            {{ name }}
-        </li>
-    </div>
-    <button v-on:click="all">Tous</button>
-    <button v-on:click="male">Hommes</button>
-    <button v-on:click="female">Femmes</button>
+    <select v-model="persChoisies">
+        <option v-for="p in personnesFiltrees" :value="p.prenom">
+            {{p.prenom}}, {{p.age}} ans
+        </option>
+    </select><br>
+    <h2>Choix du sexe:</h2>
+    <input type="radio" name="optSexe" value="X" v-model="sexeChoisi">Tous
+    <input type="radio" name="optSexe" value="F" v-model="sexeChoisi">Femmes
+    <input type="radio" name="optSexe" value="M" v-model="sexeChoisi">Hommes
+
+    <p>Age minimum: <input type="number" v-model="ageMin"></p>
+    <p>Age maximum: <input type="number" v-model="ageMax"></p>
+
+    <h3>Vous avez choisi {{persChoisies}}, sexe: {{sexeChoisi}}</h3>
+    <p v-if="persChoisies != null">La personne a {{getPersonAge}} ans</p>
 </div>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="14.js"></script>

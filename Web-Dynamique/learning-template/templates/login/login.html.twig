@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-3">
+                <h2 class="display-4 my-3">S'identifier</h2>
+                <form action="{{ path('app_login') }}" method="post">
+                    <div class="form-group my-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="text" id="email" name="_username" class="form-control"/>
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" id="password" name="_password" class="form-control"/>
+                    </div>
+                    <div class="form-group my-3">
+                        <button type="submit" class="form-control btn btn-light">Confirmer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+

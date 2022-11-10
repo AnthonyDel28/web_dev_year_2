@@ -40,6 +40,19 @@ class UserFixtures extends Fixture
             $manager->persist($user);
             $i++;
         }
+
+        $user = new User();
+        $gender = $faker->randomElement($this->genders);
+        $user->setFirstName('Jon');
+        $user->setLastName('Snow');
+        $user->setEmail('anthonydelmeire2709@gmail.com');
+        $user->setImageName('062m.jpg');
+        $user->setPassword($this->hasher->hashPassword($user, 'password'));
+        $user->setUpdatedAt(new \DateTimeImmutable());
+        $user->setCreatedAt(new \DateTimeImmutable());
+        $user->setIsDisabled(FALSE);
+        $user->setRoles(['ROLE_ADMIN']);
+        $manager->persist($user);
         $manager->flush();
     }
 }

@@ -74,3 +74,14 @@ footer a:hover {
 .card-body a {
   text-decoration: none;
 }
+
+.dropdown_profile {
+  margin-right: 50px;
+}
+
+.profile_pic {
+  border-radius: 50%;
+  width: 30px;
+  height: auto;
+}
+

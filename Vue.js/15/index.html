@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VueJS - 15</title>
+</head>
+<body>
+<div id="app" style="width: 30%">
+    <h3>Informations</h3>
+    <label>Nom: </label><input type="text" v-model="name"><br>
+    <label>Prénom: </label><input type="text" v-model="surname">
+    <fieldset>
+        <legend>Sélectionnez une région</legend>
+        <input type="radio" name="region" value="Namur" v-model="selectedRegion">Namur
+        <input type="radio" name="region" value="Liège" v-model="selectedRegion">Liège
+        <input type="radio" name="region" value="Bruxelles" v-model="selectedRegion">Bruxelles
+        <input type="radio" name="region" value="Charleroi" v-model="selectedRegion">Charleroi
+        <input type="radio" name="region" value="Mons" v-model="selectedRegion">Mons
+        <input type="radio" name="region" value="Anvers" v-model="selectedRegion">Anvers
+    </fieldset>
+    <fieldset>
+        <legend>Sélectionnez des sports</legend>
+        <input type="checkbox" name="sport" value="Football" v-model="selectedSports">Football
+        <input type="checkbox" name="sport" value="Tennis" v-model="selectedSports">Tennis
+        <input type="checkbox" name="sport" value="VTT" v-model="selectedSports">VTT
+        <input type="checkbox" name="sport" value="Course à pied" v-model="selectedSports">Course à pied
+        <input type="checkbox" name="sport" value="Paddle" v-model="selectedSports">Paddle
+        <input type="checkbox" name="sport" value="Natation" v-model="selectedSports">Natation
+    </fieldset>
+    <hr>
+    <fieldset v-if="name && surname && selectedRegion">
+        <legend>{{name}} {{surname}} de {{selectedRegion}} pratique: </legend>
+        <ul>
+            <li v-for="sport in selectedSports">
+                {{sport}}
+            </li>
+        </ul>
+    </fieldset>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="15.js"></script>
+</body>
+</html>

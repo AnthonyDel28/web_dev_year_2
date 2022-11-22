@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript : ajax avec vuejs</title>
+  </head>
+  <body>
+    <div id="app">
+      <select v-model="codeChoisi">
+        <option v-for="pays in listePaysTries" :value="pays.alpha2P">{{pays.nomFrP}}</option>
+      </select>
+
+      <p>code choisi : {{codeChoisi}}</p>
+      <p>pays choisi : {{paysChoisi}}</p>
+      <p>nom en anglais : {{paysChoisi ? paysChoisi.nomEnP : ""}}</p>
+      <p>code du pays : {{paysChoisi ? paysChoisi.codeP : 0}}</p>
+
+      <p v-if="paysChoisi">code alpha 3 : {{paysChoisi.alpha3P}}</p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="ajax01.js"></script>
+  </body>
+</html>

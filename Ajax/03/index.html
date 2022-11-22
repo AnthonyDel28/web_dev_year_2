@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>JavaScript : ajax avec vuejs02</title>
+</head>
+<body>
+<div id="app">
+    Filtre: <input type="text">
+    <select v-model="codeChoisi">
+        <<!-- Le value de la liste des pays
+        est bind sur le code pays donc relation avec le fichier js  -->
+        <option  v-for="pays in listePaysTries" :value="pays.alpha2P" :disabled="Liste">{{pays.nomFrP}}</option>
+    </select>
+    <input type="submit" v-on:click="ajouterPays">
+    <p>pays selectionnés</p>
+    <ul v-for="p in liste">
+        <li>{{p.nomFrP}}</li>
+        <button v-on:click="deletePays">ddd</button>
+    </ul>
+
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="ajax03.js"></script>
+</body>
+</html>

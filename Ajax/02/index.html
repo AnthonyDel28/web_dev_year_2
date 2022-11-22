@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript : ajax avec vuejs</title>
+  </head>
+  <body>
+    <div id="app" style="width: 50%">
+      <fieldset>
+        <legend>Veuillez choisir un pays</legend>
+        <select v-model="paysChoisi">
+          <option v-for="pays in listePaysTries" :value="pays.nomFrP">{{pays.nomFrP}}</option>
+        </select>
+      </fieldset><br>
+      <button v-on:click="addCountry()">Ajouter</button>
+      <br>
+      <fieldset>
+        <legend>Liste des pays choisis</legend>
+        <ul>
+          <li v-for="pays in payschoisis">{{pays}}</li>
+        </ul>
+      </fieldset>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="ajax01.js"></script>
+  </body>
+</html>

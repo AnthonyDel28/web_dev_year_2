@@ -6,16 +6,15 @@
   </head>
   <body>
     <div id="app">
+      <h2>Sélectionnez un pays</h2>
       <select v-model="codeChoisi">
-        <option v-for="pays in listePaysTries" :value="pays.alpha2P">{{pays.nomFrP}}</option>
+        <option v-for="p in listePaysTries" :value="p.alpha2P">{{p.nomFrP}}</option>
       </select>
-
-      <p>code choisi : {{codeChoisi}}</p>
-      <p>pays choisi : {{paysChoisi}}</p>
-      <p>nom en anglais : {{paysChoisi ? paysChoisi.nomEnP : ""}}</p>
-      <p>code du pays : {{paysChoisi ? paysChoisi.codeP : 0}}</p>
-
-      <p v-if="paysChoisi">code alpha 3 : {{paysChoisi.alpha3P}}</p>
+      <button @click="ajouterPays">Ajouter</button>
+      <h2>Liste des pays</h2>
+      <ul>
+        <li v-for="p in listePaysSelectionnes">{{p.nomFrP}}</li>
+      </ul>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="ajax01.js"></script>

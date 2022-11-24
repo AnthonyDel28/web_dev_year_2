@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="px-4 pt-5 my-5 text-center border-bottom">
+            <h1 class="display-4 fw-bold">Votre profil</h1>
+            <div class="col-5">
+                <img src="{{ asset('img/avatar/' ~ app.user.imageName ) }}" alt="" style="width: 500px; height: 500px; object-fit: cover; border-radius: 50%">
+            </div>
+        </div>
+        <div class="col-5">
+            <h3><b>Votre prénom: </b>  {{ user.firstName }}</h3>
+        </div>
+    </div>
+{% endblock %}

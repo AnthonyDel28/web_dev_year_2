@@ -29,8 +29,9 @@ class RegistrationController extends AbstractController
                     $user,
                     $form->get('plainPassword')->getData()
                 )
-            )
-                ->setImageName('default.jpg')
+            );
+                if(empty($user->getImageFile())) $user->setImageName('default.jpg');
+                $user
                 ->setCreatedAt(new \DateTimeImmutable())
                 ->setUpdatedAt(new \DateTimeImmutable())
                 ->setRoles(['ROLE_USER'])

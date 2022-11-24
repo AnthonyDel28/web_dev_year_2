@@ -42,7 +42,7 @@
                 <div class="d-flex">
                     {% if not app.user %}
                     <a href="{{ path('app_login') }}"><button type="button" class="btn btn-dark btn-sm"><i class="icofont-sign-in"></i> S'identifier</button></a>
-                    <button type="button" class="btn btn-dark btn-sm"><i class="icofont-user-alt-4"></i> S'enregistrer</button>
+                        <a href="{{ path('app_register') }}"><button type="button" class="btn btn-dark btn-sm"><i class="icofont-user-alt-4"></i> S'enregistrer</button></a>
                     {% else %}
                         <div class="dropdown dropdown_profile">
                             <button class="btn btn-secondary dropdown-toggle pr-5 mr-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">

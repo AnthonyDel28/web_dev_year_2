@@ -14,7 +14,7 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('comment', \Symfony\Component\Form\Extension\Core\Type\TextType::class, [
+            ->add('comment', \Symfony\Component\Form\Extension\Core\Type\TextareaType::class, [
                 'label' => 'Votre commentaire',
                 'attr' => [
                     'placeholder' => 'Commentaire'

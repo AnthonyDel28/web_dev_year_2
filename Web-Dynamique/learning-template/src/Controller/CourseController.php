@@ -45,9 +45,9 @@ class CourseController extends AbstractController
       $form = $this->createForm(CommentType::class, $comment);
       $form->handleRequest($request);
       if($form->isSubmitted() && $form->isValid()) {
-          $comment->setUser($comment->getUser());
-          $comment->setCourse($comment->getCourse());
-          $comment->setCreatedAt(new \DateTimeImmutable());
+          $comment->setUser($this->getUser())
+              ->setCourse($course)
+              ->setCreatedAt(new \DateTimeImmutable());
           $manager->persist($comment);
           $manager->flush();
       }

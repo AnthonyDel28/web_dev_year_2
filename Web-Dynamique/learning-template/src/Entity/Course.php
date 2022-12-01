@@ -234,6 +234,10 @@ class Course
         return $this->comments;
     }
 
+    /**
+     * @param Comment $comment
+     * @return $this
+     */
     public function addComment(Comment $comment): self
     {
         if (!$this->comments->contains($comment)) {
@@ -244,6 +248,10 @@ class Course
         return $this;
     }
 
+    /**
+     * @param Comment $comment
+     * @return $this
+     */
     public function removeComment(Comment $comment): self
     {
         if ($this->comments->removeElement($comment)) {
@@ -254,5 +262,16 @@ class Course
         }
 
         return $this;
+    }
+
+    /**
+     * @param User $user
+     * @return \T|null
+     */
+    public function getCommentFromUser(User $user){
+        foreach($this->comments as $comment){
+            if($comment->getUser() == $user) return $comment;
+        }
+        return null;
     }
 }

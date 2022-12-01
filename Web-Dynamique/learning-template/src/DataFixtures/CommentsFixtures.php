@@ -21,14 +21,14 @@ class CommentsFixtures extends Fixture implements DependentFixtureInterface
         $courses = $manager->getRepository(Course::class)->findAll();
         $users = $manager->getRepository(User::class)->findAll();
         $x = 0;
-        while($x <= 30)
+        while($x <= 25)
         {
             $comment = new Comment();
             $comment->setCreatedAt(new \DateTimeImmutable());
             $comment->setRating($faker->numberBetween(1, 5));
             $comment->setComment($faker->paragraph(3));
-            $comment->setUser($users[$faker->numberBetween(1, count($users))]);
-            $comment->setCourse($courses[$faker->numberBetween(1, count($courses))]);
+            $comment->setUser($users[$faker->numberBetween(1, count($users) - 1)]);
+            $comment->setCourse($courses[$faker->numberBetween(1, count($courses) - 1)]);
             $comment->setTitle($faker->words(3, true));
             $manager->persist($comment);
             $x++;

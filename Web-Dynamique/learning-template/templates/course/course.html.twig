@@ -21,7 +21,7 @@
                     <a class="nav-link" data-bs-toggle="tab" href="#comments">Commentaires</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#postcomments">Postez un commentaire</a>
+                    <a class="nav-link" data-bs-toggle="tab" href="#postcomments">Postez un commentaire</a>
                 </li>
             </ul>
             <div id="myTabContent" class="tab-content my-4">
@@ -36,7 +36,7 @@
                             <h4>Informations</h4>
                             <p class="description">
                                 Création: {{ course.createdAt|date('d/m/Y') }}<br>
-                                Prix: {{ course.price|format_currency('EUR', locale='fr') }}<br>
+                                Prix: {{ course.price|format_currency('EUR', locale='en') }}<br>
                                 Durée: {{ course.duration }}<br>
                                 Catégorie: {{ course.category.name }}<br>
                                 Niveau: <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="bottom" title="{{course.level.description }}">
@@ -67,15 +67,18 @@
                     <p>{{ comment.comment }}</p>
                     <hr>
                    {% endfor %}
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    <button type="submit" class="btn btn-outline-secondary">S'enregistrer</button>
-
-                    {{ form_end(form) }}
                 </div>
                 <div class="tab-pane fade" id="postcomments">
-                    <h4>Vous devez être connecté</h4>
-                    <a href="" class="btn btn-outline-primary">Login</a> <a href="" class="btn btn-outline-primary">S'enregistrer</a>
+                    <h4 class="my-4">Poster un commentaire</h4>
+                    {% if(is_granted('ROLE_USER')) %}
+                        {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                        <button type="submit" class="btn btn-outline-dark">Valider</button>
+                        {{ form_end(form) }}
+                    {% else %}
+                            <h4 class="my-4">Vous devez être connecté</h4>
+                            <a href="" class="btn btn-outline-primary">Login</a> <a href="" class="btn btn-outline-primary">S'enregistrer</a>
+                    {% endif %}
                 </div>
             </div>
         </section>

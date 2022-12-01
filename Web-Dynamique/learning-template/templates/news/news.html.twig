@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualités {{ parent() }}{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <section class="row">
+            <div class="col-md-8 offset-2">
+                <h2 class="display-4 my-4">Nos actualités</h2>
+                {% for news in news %}
+                    <div class="card mb-4">
+                        <h5 class="card-header">{{ news.name|capitalize }}</h5>
+                        <div class="card-body row">
+                            <div class="col-2">
+                                <img src="{{ asset('img/news/') ~ news.imageName }}" alt="{{ news.name }}" class="img-news">
+                            </div>
+                            <div class="col-10">
+                                <p class="card-text">{{ news.content }}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Créée le: {{ news.createdAt|date('d/m/Y') }}
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <div class="row">
+                <div class="col-md-8 offset-2">
+                    <div class="navigation">
+                        {{ knp_pagination_render(news) }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

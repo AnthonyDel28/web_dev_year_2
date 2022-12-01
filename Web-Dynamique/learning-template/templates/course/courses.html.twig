@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Courses {{ parent() }}{% endblock %}
+
+{% block body %}
+    <!-- Banner -->
+    <div class="banner">
+    </div>
+    <!-- End Banner -->
+
+    <main class="container">
+        <!-- Categories -->
+        <section id="courses">
+            <h2 class="my-5 text-black-50">Toutes nos catégories</h2>
+            <div class="row">
+                <!-- FILTERIZER CONTROLS -->
+                <div class="col-md-12 controls-filter">
+                    <ul>
+                        <!-- For filtering controls add -->
+                        <li data-filter="all" class="btn btn-outline-primary"> All items </li>
+                        {% for category in categories %}
+                        <li data-filter="{{ category.id }}" class="btn btn-outline-primary"> {{ category.name}} </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- FILTERIZER COURSES -->
+                <div class="col-md-12 filter-container" style="overflow: hidden;">
+                    <!-- Card -->
+                    {% for course in courses %}
+                    <div class="col-md-4 filtr-item" data-category="{{ course.category.id }}" data-sort="value">
+
+                        <div class="card m-3" style="min-height: 480px !important;">
+                            <div class="card-header bg-light">
+                                <h5 class="text-center">{{ course.name|capitalize }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <img alt="" src="{{ asset('img/sections/' ~ course.imageName) }}">
+                                <p class="card-text">
+                                <h5 class="card-subtitle text-muted my-3">{{ course.category.name }}</h5>
+                                <p>{{ course.smallDescription|capitalize }}</p>
+                                <div class="text-center">
+                                    <a class="btn btn-primary btn-sm" href="{{ path('course', {slug: course.slug}) }}">Voir ce cours</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- End cards -->
+                </div>
+            </div>
+        </section>
+        <!-- End Categories -->
+    </main>
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.filterizr.min.js') }}"></script>
+    <script>
+        let filterizd = $('.filter-container').filterizr({
+            // options here
+        });
+    </script>
+{% endblock %}
+

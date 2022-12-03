@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} - Admin{% endblock %}</title>
+    {# Favicon #}
+    <link rel="icon" href="{{ asset('img/design/favicon.png') }}">
+    {# Bootstrap #}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    {# Custom #}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    {# Icofont #}
+    <link rel="stylesheet" href="{{ asset('css/icofont.min.css') }}">
+    {# DataTable #}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" >
+    {% block stylesheets %}
+
+    {% endblock %}
+
+    {% block javascripts %}
+
+    {% endblock %}
+</head>
+<body>
+{% include 'admin/partials/header.html.twig' %}
+{% include 'admin/partials/menu.html.twig' %}
+{% block body %}{% endblock %}
+{% include 'admin/partials/footer.html.twig' %}
+{# JQuery #}
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+{# Bootstrap #}
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+{# DataTable #}
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#table-admin').DataTable(
+            {
+                "info": false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                }
+            }
+        );
+    } );
+</script>
+</body>
+</html>

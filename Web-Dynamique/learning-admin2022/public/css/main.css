@@ -1,0 +1,96 @@
+/* CSS */
+
+body {
+  font-size: 90%;
+  color: #141414;
+}
+
+.navbar-brand {
+  padding-right: 28px;
+}
+
+.banner {
+  height: 300px;
+  background: url("../img/banner/ban01.jpg") no-repeat;
+  background-size: cover;
+  filter: grayscale(100%);
+}
+
+.home-news a {
+  color: #325D88;
+  text-decoration: none;
+}
+
+#courses {
+  min-height: 700px;
+}
+
+/* Detail */
+.course {
+  min-height: 600px;
+}
+
+/* Profil */
+.profile-img {
+  width: 80%;
+  border-radius: 50%;
+}
+
+/* Footer */
+footer {
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #dfdfdf;
+  text-align: center;
+  color: #fff;
+}
+
+footer h4 {
+  padding-bottom: 1.3rem;
+}
+
+footer a {
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: #fedfdf;
+}
+
+/* Filterizer */
+.filtr-item img {
+  width: 100%;
+  height: auto;
+  /*filter: grayscale(100%);*/
+}
+
+.controls-filter {
+  margin-bottom: 26px;
+  color: red;
+}
+
+.img-news {
+  width: 100px;
+}
+
+.img-news-home {
+  width: 150px;
+}
+
+.img-avatar {
+  width: 30px;
+  border-radius: 50%;
+}
+
+.vich-image img {
+  width: 200px;
+}
+
+/* Admin */
+.admin-img {
+  width: 40px;
+}

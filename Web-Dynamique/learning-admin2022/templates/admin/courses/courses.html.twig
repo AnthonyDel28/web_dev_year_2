@@ -1,0 +1,42 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Courses{{ parent() }}{% endblock %}
+{% block body %}
+    <h4 class="my-5 text-muted">Gestion des formations</h4>
+    <table id="table-admin" class="table table-hover">
+        <thead>
+        <tr>
+            <th>Image</th>
+            <th>Nom</th>
+            <th>Catégorie</th>
+            <th>Niveau</th>
+            <th>Durée</th>
+            <th>Prix</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for course in courses %}
+            <tr>
+                <td><img src="{{ asset('img/sections/') ~ course.imageName }}"  alt="{{ course.name }}" class="admin-img"></td>
+                <td>{{ course.name }}</td>
+                <td>{{ course.category.name }}</td>
+                <td>{{ course.level.name }}</td>
+                <td>{{ course.duration|date('i:s') }}</td>
+                <td>{{ course.price|format_currency('EUR') }}</td>
+                <td>
+                    <a href="{{ path('app_admin_edit_course', {'id': course.id}) }}" class="btn btn-success"><i class="icofont-ui-edit"></i></a>&nbsp;
+                    <a href="{{ path('app_admin_del_course', {'id': course.id}) }}" class="btn btn-danger"><i class="icofont-ui-delete"></i></a>&nbsp;
+                    <a href="{{ path('app_admin_view_course', {'id': course.id}) }}" class="btn btn-light">
+                        {% if course.isPublished %}
+                            <i class="icofont-eye-open"></i>
+                        {% else %}
+                            <i class="icofont-eye-blocked"></i>
+                        {% endif %}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

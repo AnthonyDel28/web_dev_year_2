@@ -62,6 +62,10 @@
                         </div>
                     </div>
                 </td>
+                <td>
+                    <a href="{{ path('app_admin_user_delete', {'id': user.id}) }}" class="btn btn-danger"><i
+                                class="icofont-ui-delete"></i></a>&nbsp;
+                </td>
             </tr>
         {% endfor %}
         </tbody>

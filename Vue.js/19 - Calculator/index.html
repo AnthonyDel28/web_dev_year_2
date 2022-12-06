@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+<fieldset style="width: 750px">
+    <legend>
+        Calculator
+    </legend>
+    <div id="calcul" v-for="i in calcul">
+        <br>
+        <input type="text" v-model="i[0]">
+        +
+        <input type="text" v-model="i[1]">
+        =
+        <input type="text" v-model="i[3]">
+        <button :disabled="i[2] == 1" type="submit" v-on:click="calculator()" style="margin-left: 50px">OK</button>
+        <br>
+    </div>
+    <h2 id="score" style="color: green">
+    </h2>
+</fieldset>
+
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="vue19.js"></script>
+</body>
+</html>

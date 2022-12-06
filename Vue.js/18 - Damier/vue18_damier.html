@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="vue18_damier.css" />
+    <title>JavaScript : ajax avec vuejs</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        taille :
+        <input type="number" min="0" max="10" v-model="taille" />
+      </p>
+      <table class="tblPlateau">
+        <tr v-for="li in taille">
+          <td
+            v-for="ca in taille"
+            class="case"
+            :class="(li + ca)%2 == 0  ? 'case-coloree' : ''"
+          ></td>
+        </tr>
+      </table>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="vue18_damier.js"></script>
+  </body>
+</html>

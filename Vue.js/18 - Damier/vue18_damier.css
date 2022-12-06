@@ -1,0 +1,11 @@
+.tblPlateau {
+    border: solid;
+  }
+.case {
+    border: solid black 1px;
+    width: 50px;
+    height: 50px;
+  }
+.case-coloree{
+    background-color: black;
+}  

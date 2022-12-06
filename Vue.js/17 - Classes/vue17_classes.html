@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="vue17_classes.css" />
+    <title>JavaScript : ajax avec vuejs</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="checkbox" v-model="chk_ok" />OK<br />
+      <p :class="chk_ok ? 'ok' : 'bad'">Ce texte est {{chk_ok}}</p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="vue17_classes.js"></script>
+  </body>
+</html>

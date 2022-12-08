@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Course;
 use App\Entity\CourseCategory;
 use App\Entity\CourseLevel;
+use App\Entity\User;
 use Cocur\Slugify\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -26,11 +27,13 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
         // Récupération de toutes les instances (objets) des entités CourseCategory et CourseLevel
         $categories = $manager->getRepository(CourseCategory::class)->findAll();
         $levels = $manager->getRepository(CourseLevel::class)->findAll();
+        $teachers = $manager->getRepository(User::class)->findAll();
         // Externalisation de la fonction count()
         $nbCat      = count($categories);
         $nbLevel    = count($levels);
         $nbPrice    = count($this->prices);
         $nbDuration = count($this->durations);
+        $nbTeachers = count($teachers);
         for($i = 1; $i <= 26; $i++) {
             $course = new Course();
             $course ->setCategory($categories[$faker->numberBetween(0, $nbCat -1)])
@@ -45,7 +48,8 @@ class CourseFixtures extends Fixture implements DependentFixtureInterface
                     ->setIsPublished($faker->boolean(90))
                     ->setSlug($slugify->slugify($course->getName()))
                     ->setImageName($i . '.jpg')
-                    ->setPdfName($i . '.pdf');
+                    ->setPdfName($i . '.pdf')
+                    ->setTeacher($teachers[$faker->numberBetween(41, $nbTeachers -1)]);
             $manager->persist($course);
         }
         $manager->flush();

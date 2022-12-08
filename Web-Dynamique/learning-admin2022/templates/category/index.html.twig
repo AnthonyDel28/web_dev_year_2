@@ -17,14 +17,19 @@
                 <div class="col-md-12 controls-filter">
                     <ul>
                         <!-- For filtering controls add -->
-                        <li data-filter="all" class="btn btn-outline-primary"> All items </li>
+                        <li data-filter="all" class="btn btn-outline-primary"> All teachers </li>
+                        {% for course in courses %}
+                            <li data-filter="{{ course.teacher.id }}" class="btn btn-outline-primary"> {{ course.teacher
+                                .firstName }} {{ course.teacher.lastName }}
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <!-- FILTERIZER COURSES -->
                 <div class="col-md-12 filter-container" style="overflow: hidden;">
                     <!-- Card -->
                     {% for course in courses %}
-                        <div class="col-md-4 filtr-item" data-category="{{ course.category.id }}" data-sort="value">
+                        <div class="col-md-4 filtr-item" data-category="{{ course.teacher.id }}" data-sort="value">
 
                             <div class="card m-3" style="min-height: 480px !important;">
                                 <div class="card-header bg-light">

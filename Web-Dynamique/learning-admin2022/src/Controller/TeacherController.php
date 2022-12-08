@@ -23,6 +23,7 @@ class TeacherController extends AbstractController
     Response
     {
         $category_name = $courseCategory->getName();
+        $category_id = $courseCategory->getId();
         $courses = $courseCategory->getCourses();
         return $this->renderForm('category/index.html.twig', [
             'category_name' => $category_name,

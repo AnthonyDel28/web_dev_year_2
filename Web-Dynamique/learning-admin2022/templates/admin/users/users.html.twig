@@ -26,6 +26,8 @@
                 {% for role in user.roles %}
                     {% if role is same as 'ROLE_USER' %}
                         <td>Utilisateur</td>
+                    {% elseif role is same as 'ROLE_TEACHER' %}
+                        <td>Professeur</td>
                     {% elseif role is same as 'ROLE_ADMIN' %}
                         <td>Administrateur</td>
                     {% elseif role is same as 'ROLE_SUPER_ADMIN' %}
@@ -46,16 +48,24 @@
                                 {% for role in user.roles %}
                                     {% if role is same as 'ROLE_USER' %}
                                         <a>Utilisateur</a><br>
+                                        <a href="{{ path('app_admin_role_user_teacher', {'id': user.id}) }}">Professeur</a><br>
                                         <a href="{{ path('app_admin_role_user_admin', {'id': user.id}) }}">Administrateur</a><br>
                                         <a href="{{ path('app_admin_role_user_super_admin', {'id': user.id}) }}">Super Admin</a><br>
                                     {% elseif role is same as 'ROLE_ADMIN' %}
                                         <a href="{{ path('app_admin_role_user_user', {'id': user.id}) }}">Utilisateur</a><br>
+                                        <a href="{{ path('app_admin_role_user_teacher', {'id': user.id}) }}">Professeur</a><br>
                                         <a>Administrateur</a><br>
                                         <a href="{{ path('app_admin_role_user_super_admin', {'id': user.id}) }}">Super Admin</a><br>
                                     {% elseif role is same as 'ROLE_SUPER_ADMIN' %}
                                         <a href="{{ path('app_admin_role_user_user', {'id': user.id}) }}">Utilisateur</a><br>
+                                        <a href="{{ path('app_admin_role_user_teacher', {'id': user.id}) }}">Professeur</a><br>
                                         <a href="{{ path('app_admin_role_user_admin', {'id': user.id}) }}">Administrateur</a><br>
                                         <a>Super Admin</a><br>
+                                        {% elseif role is same as 'ROLE_TEACHER' %}
+                                            <a href="{{ path('app_admin_role_user_user', {'id': user.id}) }}">Utilisateur</a><br>
+                                            <a>Professeur</a><br>
+                                            <a href="{{ path('app_admin_role_user_admin', {'id': user.id}) }}">Administrateur</a><br>
+                                            <a href="{{ path('app_admin_role_user_super_admin', {'id': user.id}) }}">Super Admin</a><br>
                                     {% endif %}
                                 {% endfor %}
                             </div>

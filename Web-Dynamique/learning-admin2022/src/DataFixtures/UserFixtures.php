@@ -21,7 +21,7 @@ class UserFixtures extends Fixture
     {
         $faker = Factory::create();
         $slug = new Slugify(); // uniquement pour nettoyer le prefixe du mail
-        for($i = 1; $i <= 50; $i++) {
+        for($i = 1; $i <= 20; $i++) {
             $user = new User();
             $gender = $faker->randomElement($this->genders);
             $user   ->setFirstName($faker->firstName($gender))
@@ -36,6 +36,24 @@ class UserFixtures extends Fixture
                     ->setRoles(['ROLE_USER']);
             $manager->persist($user);
         }
+
+        for($i = 21; $i <= 50; $i++) {
+            $user = new User();
+            $gender = $faker->randomElement($this->genders);
+            $user   ->setFirstName($faker->firstName($gender))
+                ->setLastName($faker->lastName)
+                ->setEmail($slug->slugify($user->getFirstName()) . '.' . $slug->slugify($user->getLastName()) . '@' . $faker->freeEmailDomain());
+            $gender = $gender == 'male' ? 'm' : 'f';
+            $user   ->setImageName('0' . ($i + 9) . $gender . '.jpg')
+                ->setPassword($this->hasher->hashPassword($user, 'password'))
+                ->setCreatedAt(new \DateTimeImmutable())
+                ->setUpdatedAt(new \DateTimeImmutable())
+                ->setIsDisabled($faker->boolean(10))
+                ->setRoles(['ROLE_TEACHER']);
+            $manager->persist($user);
+        }
+
+
         // Admin John Doe
         $user = new User();
         $user   ->setFirstName('John')

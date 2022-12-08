@@ -52,6 +52,15 @@ class AdminUserController extends AbstractController
         return $this->redirectToRoute('app_admin_user');
     }
 
+    #[Route('/admin/role_teacher/{id}', name: 'app_admin_role_user_teacher')]
+    public function userToTeacher(User $user, EntityManagerInterface $manager) :Response
+    {
+        $role[] = 'ROLE_TEACHER';
+        $user->setRoles($role);
+        $manager->flush();
+        return $this->redirectToRoute('app_admin_user');
+    }
+
     #[Route('/admin/user_delete/{id}', name: 'app_admin_user_delete')]
     public function userDelete(User $user, EntityManagerInterface $manager) :Response
     {

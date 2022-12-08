@@ -36,7 +36,7 @@
                             <h4>Informations</h4>
                             <p class="description">
                                 Création: {{ course.createdAt|date('d/m/Y') }}<br>
-                                Prix: {{ course.price|format_currency('EUR', locale='fr') }}<br>
+                                Prix: {{ course.price|format_currency('EUR', locale='en') }}<br>
                                 Durée: {{ course.duration }}<br>
                                 Catégorie: {{ course.category.name }}<br>
                                 Niveau: <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="bottom" title="{{course.level.description }}">

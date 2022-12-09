@@ -66,4 +66,13 @@
             </div>
         </div>
     </nav>
+
+    {# Affichage du message flash #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
 {% endblock %}

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\MailerInterface;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,7 +17,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(MailerInterface $mailer, Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -38,6 +40,22 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
             // do anything else you need here, like send an email
 
+            $email = new TemplatedEmail();
+            $email->from($user->getEmail());
+            $email->to('anthony@gmail.com');
+            $email->subject('Inscription sur notre site');
+            $email->htmlTemplate('contact/email-registration.html.twig');
+            $email->context(
+                [
+                    'firstName' => $user->getFirstName(),
+                    'lastName' => $user->getLastName(),
+                ]
+            );
+            $mailer->send($email);
+            $this->addFlash(
+                'success',
+                'Inscription terminée avec succès!'
+            );
             return $this->redirectToRoute('home');
         }
 

@@ -73,7 +73,7 @@ const app = Vue.createApp({
                     clearInterval(this);
                     document.getElementById("alert").innerHTML = "";
                 }
-                else document.getElementById("alert").innerHTML = "Le test va commencer dans  " + timeLeft-- + " secondes!"
+                else document.getElementById("alert").innerHTML = "Le test commencera dans  " + timeLeft-- + " secondes!"
             }, 1000);
         },
         calculator(){

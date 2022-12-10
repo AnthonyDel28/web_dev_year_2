@@ -1,0 +1,31 @@
+body {
+    background-color: #00203FFF;
+    text-align: center;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.main-title {
+    color: white;
+    font-size: 75px;
+
+    display: inline;
+    padding: -50px;
+}
+
+.app {
+    width: 1000px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #0a58ca;
+    display: block;
+    overflow: auto;
+    padding: 50px;
+}
+
+.sub-title {
+    color: #0dcaf0;
+    font-family: Helvetica, Arial, sans-serif;
+}

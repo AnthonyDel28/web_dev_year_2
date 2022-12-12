@@ -18,10 +18,16 @@ const app = Vue.createApp({
     },
     methods: {
         registration() {
+            if(this.pseudo === "" || this.pseudo == 0 || this.pseudo == null){
+                this.error("Veuillez insérer un pseudo valide !");
+                return;
+            } else if(this.pseudo.length <= 3){
+                this.error("Votre pseudo doit contenir au moins 4 caractères!");
+                return;
+            }
             this.status = "countdown";
             this.status_checker();
         },
-
         status_checker() {
             switch (this.status){
                 case 'registration':
@@ -115,11 +121,13 @@ const app = Vue.createApp({
         restart(){
             this.status = 'registration';
             this.status_checker();
+        },
+        error(message){
+            document.getElementById("error").innerHTML = message;
+            document.getElementById("error").style.color = "red";
         }
-
     },
     computed: {
-
     },
     mounted() {
         this.status_checker();

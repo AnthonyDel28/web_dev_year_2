@@ -42,8 +42,8 @@
     </div>
     <div id="scoreboard">
         <h2 style="color: white">Votre test est terminé!</h2>
-        <p id="final-score" class="final-score"></p>
-        <button type="submit" v-on:click="restart()">Recommencer un nouveau test</button>
+        <p id="final-score" class="final-score alert alert-warning"></p>
+        <button class="btn btn-primary" type="submit" v-on:click="restart()">Recommencer un nouveau test</button>
     </div>
 </div>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

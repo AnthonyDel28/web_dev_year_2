@@ -15,6 +15,7 @@ const app = Vue.createApp({
             ],
             score: 0,
             timing: 0,
+            scores: [],
         };
     },
     methods: {
@@ -51,7 +52,9 @@ const app = Vue.createApp({
                     document.getElementById('register').style.display = "block";
                     document.getElementById('countdown').style.display = "none";
                     document.getElementById('exam').style.display = "none";
-                    document.getElementById('scoreboard').style.display = "none";
+                    document.getElementById('score').style.display = "none";
+                    document.getElementById("scoreboard").style.display = "none";
+                    document.getElementById("finish").style.display = "none";
                     break;
                 case 'countdown':
                     document.getElementById('error').style.display = "none";
@@ -59,21 +62,21 @@ const app = Vue.createApp({
                     document.getElementById('countdown').style.display = "block";
                     this.createAlert(5);
                     setTimeout(() => {
-                       this.status = "running";
-                       this.status_checker();
+                        this.status = "running";
+                        this.status_checker();
                     }, 6000);
                     break;
                 case 'running':
                     document.getElementById('countdown').style.display = "none";
                     document.getElementById('exam').style.display = "block";
-                    this.createExamCountdown(10);
+                    this.createExamCountdown(20);
                     this.timing = 1;
                     this.time();
                     break;
                 case 'finished':
                     document.getElementById('exam').style.display = "none";
-                    document.getElementById('scoreboard').style.display = "block";
-                    this.scoreboard();
+                    document.getElementById('score').style.display = "block";
+                    this.showscore();
                     break;
             }
         },
@@ -113,16 +116,14 @@ const app = Vue.createApp({
         time(){
             if(this.timing == 1){
                 setTimeout(() => {
-                    this.status = "finished";
                     this.calcul[this.count][2] = 1;
-                    this.status_checker();
-                }, 11500);
+                    document.getElementById("finish").style.display = "block";
+                }, 21500);
             }
         },
-        scoreboard(){
+        showscore(){
             document.getElementById("final-score").innerHTML = "Votre score: " + this.score;
-            this.insertScore();
-            },
+        },
         restart(){
             this.status = 'registration';
             this.status_checker();
@@ -132,19 +133,25 @@ const app = Vue.createApp({
             document.getElementById("error").innerHTML = message;
             document.getElementById("error").style.color = "red";
         },
-        insertScore(){
-            $(document).ready(function(){
-                    $.ajax({
-                        url:'save.php',
-                        method:'POST',
-                        data:{
-                            pseudo: this.pseudo.val(),
-                            score: this.score.val(),
-                        },
-                        success:function(data){
-                            alert(data);
-                        }
-                    });
+        displayScores() {
+            document.getElementById("score").style.display = "none";
+            document.getElementById("scoreboard").style.display = "block";
+            fetch("scoreboard.php")
+                .then(rep => rep.json())
+                .then(scores => {
+                    this.scores = scores;
+                });
+        },
+        next(){
+            this.status = 'finished';
+            this.status_checker();
+            $.ajax({
+                type: "POST",
+                url: "save.php",
+                data: {
+                    pseudo: this.pseudo,
+                    score: this.score,
+                },
             });
         },
     },
@@ -156,4 +163,5 @@ const app = Vue.createApp({
 });
 
 app.mount("#app");
+
 

@@ -5,13 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="19.css">
+    <link rel="stylesheet" href="css/19.css">
+    <link rel="stylesheet" href="css/icofont.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>MathChallenge</title>
 </head>
-<body class="bg-dark">
+<body class="bg-dark text-center">
 <div id="app" class="app text-center">
     <h1 class="main-title">THE MATH CHALLENGE </h1><br>
     <div class="register" id="register">
@@ -39,13 +40,50 @@
             <button :disabled="i[2] === 1" type="submit" v-on:click="calculator()" style="margin-left: 50px" class="btn btn-primary">Confirmer</button>
             <br>
         </div>
+        <div id="finish" class="my-2">
+            <h2 style="color: white">Votre test est terminé, le temps est écoulé!</h2>
+            <button id="next" class="btn btn-success" v-on:click="next()">Suivant</button>
+        </div>
     </div>
-    <div id="scoreboard">
+    <div id="score" class="text-center">
         <h2 style="color: white">Votre test est terminé!</h2>
         <p id="final-score" class="final-score alert alert-warning"></p>
-        <button class="btn btn-primary" type="submit" v-on:click="restart()">Recommencer un nouveau test</button>
+        <button class="btn btn-primary my-2" type="submit" v-on:click="restart()">Recommencer un nouveau test</button>
+        <br><button class="btn btn-light" type="submit" v-on:click="displayScores()">Voir le tableau des
+            scores</button>
+    </div>
+    <div id="scoreboard" class="text-center">
+        <h2 style="color: white">Tableau des scores</h2>
+        <table id="scoretable" class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Score</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tr id="firstRow" v-for="(score, index) in scores" :key="index">
+                <td>{{score.pseudo}}</td>
+                <td>{{score.score}}</td>
+                <td>{{score.date}}</td>
+            </tr>
+        </table>
+        <br>
+        <button class="btn btn-light" v-on:click="restart()">Retourner à l'acceuil</button>
     </div>
 </div>
+<style>
+    #scoretable #firstRow:first-child {
+        color: gold;
+    }
+    #scoretable #firstRow:nth-child(2) {
+        color: darkgoldenrod;
+    }
+    #scoretable #firstRow:nth-child(3) {
+        color: saddlebrown;
+    }
+</style>
+
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="vue19.js"></script>

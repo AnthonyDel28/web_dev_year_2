@@ -37,6 +37,8 @@ const app = Vue.createApp({
                             0,
                         ],
                     ];
+                    document.getElementById("alert").innerHTML = "";
+                    document.getElementById("exam-countdown").innerHTML = "";
                     document.getElementById('register').style.display = "block";
                     document.getElementById('countdown').style.display = "none";
                     document.getElementById('exam').style.display = "none";
@@ -44,9 +46,8 @@ const app = Vue.createApp({
                     break;
                 case 'countdown':
                     document.getElementById('register').style.display = "none";
-                    document.getElementById('exam').style.display = "none";
                     document.getElementById('countdown').style.display = "block";
-                    this.createAlert();
+                    this.createAlert(5);
                     setTimeout(() => {
                        this.status = "running";
                        this.status_checker();
@@ -55,7 +56,7 @@ const app = Vue.createApp({
                 case 'running':
                     document.getElementById('countdown').style.display = "none";
                     document.getElementById('exam').style.display = "block";
-                    this.createExamCountdown();
+                    this.createExamCountdown(10);
                     this.timing = 1;
                     this.time();
                     break;
@@ -66,14 +67,12 @@ const app = Vue.createApp({
                     break;
             }
         },
-        createAlert(){
-            let timeLeft = 5;
+        createAlert(time){
             setInterval(function() {
-                if(timeLeft === 0){
+                if(time == 0){
                     clearInterval(this);
-                    document.getElementById("alert").innerHTML = "";
                 }
-                else document.getElementById("alert").innerHTML = "Le test commencera dans  " + timeLeft-- + " secondes!"
+                else document.getElementById("alert").innerHTML = "Le test commencera dans  " + time-- + " secondes!"
             }, 1000);
         },
         calculator(){
@@ -86,19 +85,18 @@ const app = Vue.createApp({
             this.calcul[this.count].push(Math.floor(Math.random() * 101), Math.floor(Math.random() * 101), this.count);
             this.calcul[this.count][2] = 0;
         },
-        createExamCountdown(){
-            let timeLeft = 10;
+        createExamCountdown(time){
             setInterval(function() {
-                if(timeLeft >= 0){
-                    document.getElementById("exam-countdown").innerHTML = "Il vous reste " + timeLeft-- + " secondes!";
-                    if(timeLeft > 4){
+                if(time >= 0){
+                    document.getElementById("exam-countdown").innerHTML = "Il vous reste " + time-- + " secondes!";
+                    if(time > 4){
                         document.getElementById("exam-countdown").style.color = "limegreen";
                     } else {
                         document.getElementById("exam-countdown").style.color = "darkred";
                     }
                 } else {
                     clearInterval(this);
-                    document.getElementById("exam-countdown").innerHTML = "";
+
                 }
             }, 1000);
         },
@@ -113,7 +111,7 @@ const app = Vue.createApp({
         },
         scoreboard(){
             document.getElementById("final-score").innerHTML = "Votre score: " + this.score;
-        },
+            },
         restart(){
             this.status = 'registration';
             this.status_checker();

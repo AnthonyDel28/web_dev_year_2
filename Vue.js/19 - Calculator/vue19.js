@@ -1,3 +1,4 @@
+
 const app = Vue.createApp({
     data() {
         return {
@@ -20,9 +21,11 @@ const app = Vue.createApp({
         registration() {
             if(this.pseudo === "" || this.pseudo == 0 || this.pseudo == null){
                 this.error("Veuillez insérer un pseudo valide !");
+                document.getElementById('error').style.display = "block";
                 return;
             } else if(this.pseudo.length <= 3){
                 this.error("Votre pseudo doit contenir au moins 4 caractères!");
+                document.getElementById('error').style.display = "block";
                 return;
             }
             this.status = "countdown";
@@ -118,6 +121,9 @@ const app = Vue.createApp({
         },
         scoreboard(){
             document.getElementById("final-score").innerHTML = "Votre score: " + this.score;
+            let scores = {
+              pseudo: this.pseudo, score: this.score
+            };
             },
         restart(){
             this.status = 'registration';

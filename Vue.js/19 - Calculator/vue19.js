@@ -51,6 +51,7 @@ const app = Vue.createApp({
                     document.getElementById('scoreboard').style.display = "none";
                     break;
                 case 'countdown':
+                    document.getElementById('error').style.display = "none";
                     document.getElementById('register').style.display = "none";
                     document.getElementById('countdown').style.display = "block";
                     this.createAlert(5);
@@ -123,6 +124,7 @@ const app = Vue.createApp({
             this.status_checker();
         },
         error(message){
+            document.getElementById("error").className = "alert alert-danger";
             document.getElementById("error").innerHTML = message;
             document.getElementById("error").style.color = "red";
         }

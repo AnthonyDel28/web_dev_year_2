@@ -121,9 +121,7 @@ const app = Vue.createApp({
         },
         scoreboard(){
             document.getElementById("final-score").innerHTML = "Votre score: " + this.score;
-            let scores = {
-              pseudo: this.pseudo, score: this.score
-            };
+            this.insertScore();
             },
         restart(){
             this.status = 'registration';
@@ -133,7 +131,22 @@ const app = Vue.createApp({
             document.getElementById("error").className = "alert alert-danger";
             document.getElementById("error").innerHTML = message;
             document.getElementById("error").style.color = "red";
-        }
+        },
+        insertScore(){
+            $(document).ready(function(){
+                    $.ajax({
+                        url:'save.php',
+                        method:'POST',
+                        data:{
+                            pseudo: this.pseudo.val(),
+                            score: this.score.val(),
+                        },
+                        success:function(data){
+                            alert(data);
+                        }
+                    });
+            });
+        },
     },
     computed: {
     },

@@ -15,7 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     /*
-     *
     #[Route('/contact', name: 'app_contact')]
     public function sendEmail(MailerInterface $mailer): Response
     {
@@ -35,6 +34,7 @@ class ContactController extends AbstractController
         ]);
     }
     */
+
 
     /**
      * @param MailerInterface $mailer

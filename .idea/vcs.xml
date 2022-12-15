@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Symfony/webarticles" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Web-Dynamique/front" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Web-Dynamique/learning-admin2022" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Web-Dynamique/learning-comments" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Web-Dynamique/learning-profil" vcs="Git" />

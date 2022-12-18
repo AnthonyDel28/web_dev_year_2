@@ -37,7 +37,14 @@ body {
 }
 
 .operator {
-    font-size: 25px;
+    font-size: 30px;
     margin-left: 10px;
     margin-right: 10px;
+    color: white;
+}
+
+.nbr {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
 }

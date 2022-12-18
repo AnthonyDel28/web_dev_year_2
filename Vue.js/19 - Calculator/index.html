@@ -32,9 +32,9 @@
         <p id="exam-countdown"></p>
         <div id="calcul" v-for="i in calcul">
             <br>
-            <input type="text" v-model="i[0]">
-            <span class="operator">{{operator}}</span>
-            <input type="text" v-model="i[1]">
+            <span class="nbr">{{i[0]}}</span>
+            <span class="operator">{{i[4]}}</span>
+            <span class="nbr">{{i[1]}}</span>
             =
             <input type="text" v-model="i[3]">
             <button :disabled="i[2] === 1" type="submit" v-on:click="calculator()" style="margin-left: 50px" class="btn btn-primary">Confirmer</button>

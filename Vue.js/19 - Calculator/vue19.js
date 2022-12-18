@@ -6,13 +6,13 @@ const app = Vue.createApp({
             pseudo:  null,
             count: 0,
             operators: ["+", "-", "*", "/", "%"],
-            operator: "+",
             calcul: [
                 [
                     Math.floor(Math.random() * 101),
                     Math.floor(Math.random() * 101),
                     0,
                     0,
+                    "",
                 ],
             ],
             score: 0,
@@ -47,8 +47,10 @@ const app = Vue.createApp({
                             Math.floor(Math.random() * 101),
                             0,
                             0,
+                            "",
                         ],
                     ];
+                    this.calcul[0][4] = this.operators[Math.floor(Math.random() * this.operators.length)];
                     document.getElementById("alert").innerHTML = "";
                     document.getElementById("exam-countdown").innerHTML = "";
                     document.getElementById('register').style.display = "block";
@@ -92,12 +94,37 @@ const app = Vue.createApp({
         },
         calculator(){
             this.calcul[this.count][2] = 1;
-            if(((this.calcul[this.count][0]) + this.calcul[this.count][1]) == this.calcul[this.count][3]){
-                this.score++;
+            switch (this.calcul[this.count][4]){
+                case '+':
+                    if(((this.calcul[this.count][0]) + this.calcul[this.count][1]) == this.calcul[this.count][3]){
+                        this.score++;
+                        break;
+                    }
+                case '-':
+                    if(((this.calcul[this.count][0]) - this.calcul[this.count][1]) == this.calcul[this.count][3]){
+                        this.score++;
+                        break;
+                    }
+                case '*':
+                    if(((this.calcul[this.count][0]) * this.calcul[this.count][1]) == this.calcul[this.count][3]){
+                        this.score++;
+                        break;
+                    }
+                case '/':
+                    if((Math.round(this.calcul[this.count][0] / this.calcul[this.count][1]) == Math.round(this.calcul[this.count][3]))){
+                        this.score++;
+                        break;
+                    }
+                case '%':
+                    if(((this.calcul[this.count][0]) % this.calcul[this.count][1]) == this.calcul[this.count][3]){
+                        this.score++;
+                        break;
+                    }
             }
             this.count++;
             this.calcul[this.count] = [];
             this.calcul[this.count].push(Math.floor(Math.random() * 101), Math.floor(Math.random() * 101), this.count);
+            this.calcul[this.count][4] = this.operators[Math.floor(Math.random() * this.operators.length)];
             this.calcul[this.count][2] = 0;
         },
         createExamCountdown(time){

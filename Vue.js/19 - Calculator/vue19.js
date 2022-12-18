@@ -6,13 +6,13 @@ const app = Vue.createApp({
             pseudo:  null,
             count: 0,
             operators: ["+", "-", "*", "/", "%"],
+            operator: "+",
             calcul: [
                 [
                     Math.floor(Math.random() * 101),
                     Math.floor(Math.random() * 101),
                     0,
                     0,
-                    "%"
                 ],
             ],
             score: 0,

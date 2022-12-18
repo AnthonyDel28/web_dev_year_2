@@ -33,7 +33,7 @@
         <div id="calcul" v-for="i in calcul">
             <br>
             <input type="text" v-model="i[0]">
-            +
+            <span class="operator">{{operator}}</span>
             <input type="text" v-model="i[1]">
             =
             <input type="text" v-model="i[3]">

@@ -6,13 +6,9 @@ $pdo = new PDO(
     ''
 );
 
-$statement= $pdo->prepare(
-    "SELECT * FROM scores ORDER BY score DESC LIMIT 10"
-);
+$statement = $pdo->prepare("SELECT * FROM scores ORDER BY score DESC LIMIT 10");
 $statement->execute();
-
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
 $json = json_encode($result);
 
-echo $json;
+print $json;

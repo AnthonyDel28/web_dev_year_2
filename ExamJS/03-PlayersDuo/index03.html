@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ExamJS03 - SportsDuo</title>
+</head>
+<body>
+<div id="app">
+    <h3>Sexe: </h3>
+    <input type="radio" value="M" v-model="gender">Hommes
+    <input type="radio" value="F" v-model="gender">Femmes
+    <input type="radio" value="MX" v-model="gender">Mixte
+    <h3>Joueur 1
+        <span v-if="gender === 'M'">Homme</span>
+        <span v-if="gender === 'F'">Femme</span>
+        <span v-if="gender === 'MX'">Homme</span>
+        :</h3>
+    <select v-model="player1">
+        <option disabled value="">Veuillez choisir</option>
+        <option  v-for="x in firstList" :value="x">
+            {{x.prenom}} {{x.nom}}
+        </option>
+    </select>
+    <h3>Joueur 2
+        <span v-if="gender === 'M'">Homme</span>
+        <span v-if="gender === 'F'">Femme</span>
+        <span v-if="gender === 'MX'">Femme</span>
+        :</h3>
+    <select v-model="player2">
+        <option disabled value="">Veuillez choisir</option>
+        <option  v-for="x in secondList" :value="x">
+            {{x.prenom}} {{x.nom}}
+        </option>
+    </select>
+    <br>
+    <p>Type d'équipe: {{team}}</p>
+
+    <p>Joueur 1: {{player1.prenom}} {{player1.nom}} ({{player1.sexe}})</p>
+    <p>Joueur 2: {{player2.prenom}} {{player2.nom}} ({{player2.sexe}})</p>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="03.js"></script>
+</body>
+</html>

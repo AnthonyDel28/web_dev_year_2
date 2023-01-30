@@ -1,0 +1,32 @@
+.content {
+    width: 500px;
+    height: auto;
+    background-color: darkgrey;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.codeArea {
+    height: 50px;
+    width: 100px;
+    background-color: gray;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.codeArea .stars {
+    font-size: 40px;
+}
+
+#app button {
+    margin: 10px;
+}
+
+#error {
+    display: none;
+}
